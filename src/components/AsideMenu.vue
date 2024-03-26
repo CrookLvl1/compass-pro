@@ -41,9 +41,10 @@
 import { defineAsyncComponent, ref } from "vue";
 const LoadingComp = defineAsyncComponent(() => import('@/components/ui/LoadingComp.vue'));
 
-
+//initial
 const imgSrc = ref(null);
 
+//IIFE
 fetch("https://picsum.photos/64", { method: "get" })
     .then((data) => data.url)
     .then((data) => (imgSrc.value = data));

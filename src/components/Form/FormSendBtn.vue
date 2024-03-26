@@ -6,6 +6,7 @@
 
 <script setup>
 import { defineProps } from 'vue'
+//props, emits, etc...
 defineProps({
     placeholder: {
         required: true,

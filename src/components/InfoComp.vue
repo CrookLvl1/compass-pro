@@ -11,8 +11,10 @@
 
 <script setup>
 import { defineProps } from 'vue';
+
+//props, emits, etc...
 defineProps({
-    item: {required: true}
+    item: { required: true }
 })
 </script>
 

@@ -4,7 +4,8 @@
         <section class="sections">
             <FormMainComponent class="sections__form" @form-sent="formSentHandler" />
             <transition name="fade" mode="out-in">
-                <InfoComp class="sections__info" :style="{'visibility': data ? '' : 'hidden'}" :item="data" :key="data" />
+                <InfoComp class="sections__info" :style="{ 'visibility': data ? '' : 'hidden' }" :item="data"
+                    :key="data" />
             </transition>
         </section>
     </div>
@@ -14,11 +15,13 @@
 import FormMainComponent from '@/components/Form/FormMainComponent.vue'
 import InfoComp from '@/components/InfoComp.vue';
 import { shallowRef } from 'vue';
+
+//initial
 let data = shallowRef(null);
 
-const formSentHandler = (eventData) => {
-    data.value = eventData;
-};
+
+//handlers
+const formSentHandler = (eventData) => data.value = eventData;
 </script>
 
 <style lang="sass" scoped>

@@ -1,13 +1,14 @@
 <template>
     <label class="form-text-area">
         <textarea v-model="modelValue" :name="name" :placeholder="placeholder"></textarea>
-        <div class="counter">Символов: {{ modelValue.length}}</div>
+        <div class="counter">Символов: {{ modelValue.length }}</div>
     </label>
 </template>
 
 <script setup>
 import { defineProps, defineModel } from 'vue';
 
+//props, emits, etc...
 const modelValue = defineModel({ required: true })
 
 defineProps({

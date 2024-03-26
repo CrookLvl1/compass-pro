@@ -4,7 +4,8 @@
         <FormTextInput v-model="form.email" :name="'email'" :placeholder="'Email'" :inputType="'email'" />
         <FormRadioInput v-model="form.gender" :name="'gender'" :placeholder="'Пол'" :items="genderItems" />
         <FormTextArea v-model="form.message" :name="'message'" :placeholder="'Сообщение'" />
-        <FormCheckBox v-model="form.agree" :name="'agree'" :placeholder="'Согласен(на) на обработку персональных данных'" />
+        <FormCheckBox v-model="form.agree" :name="'agree'"
+            :placeholder="'Согласен(на) на обработку персональных данных'" />
         <FormSendBtn :placeholder="'Отправить'" />
     </form>
 </template>
@@ -17,8 +18,11 @@ import FormSendBtn from '@/components/Form/FormSendBtn.vue';
 import FormTextArea from '@/components/Form/FormTextArea.vue';
 import FormCheckBox from '@/components/Form/FormCheckBox.vue';
 
+//props, emits, etc...
 const emit = defineEmits(['form-sent'])
 
+
+//initial
 const genderItems = [{
     label: 'Мужской',
     value: 'male'
@@ -36,8 +40,9 @@ const form = reactive({
 })
 
 
+//functions
 const formSubmit = () => {
-    emit('form-sent', {...form})
+    emit('form-sent', { ...form })
     form.name = '';
     form.email = '';
     form.gender = '';

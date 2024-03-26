@@ -6,7 +6,9 @@
 
 <script setup>
 import { defineProps, defineModel } from 'vue';
-const modelValue = defineModel({required: true})
+
+//props, emits, etc...
+const modelValue = defineModel({ required: true })
 
 defineProps({
     placeholder: {

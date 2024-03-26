@@ -6,6 +6,8 @@
 
 <script setup>
 import { ref, defineEmits, defineProps } from 'vue'
+
+//props, emits, etc...
 const emit = defineEmits(['confirmed-event'])
 const props = defineProps({
     uniqueId: {
@@ -13,13 +15,19 @@ const props = defineProps({
     }
 });
 
+//initial
 const label = ref('Удалить');
-
 const counter = ref(0);
+
+
+//functions
 const reset = () => {
     counter.value = 0;
     label.value = 'Удалить';
 }
+
+
+//handlers
 const clickHanlder = (ev) => {
     ev.stopPropagation();
 
@@ -31,13 +39,13 @@ const clickHanlder = (ev) => {
             document.addEventListener('click', (ev) => {
                 if (ev.target.closest(`delete-button-${props.uniqueId}`)) return;
                 reset()
-            }, { 'once': true, capture: true });
+            }, { 'once': true });
 
             break;
         }
         case 1: {
-            reset()
             emit('confirmed-event')
+            reset()
             break;
         }
         default: {

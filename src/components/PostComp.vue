@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, ref, defineAsyncComponent } from 'vue';
+import { defineProps, inject, ref, defineAsyncComponent } from 'vue';
 import DeleteButton from '@/components/ui/DeleteButton.vue'
 const LoadingComp = defineAsyncComponent(() => import('@/components/ui/LoadingComp.vue'));
 
@@ -32,7 +32,6 @@ const props = defineProps({
         required: true,
     },
 })
-const emit = defineEmits(['post-deleted']);
 
 
 //initial
@@ -41,15 +40,17 @@ const requestSent = ref(false);
 
 
 //functions
+const postDeletedHandler = inject('post-deleted-handler');
 const deletePost = async () => {
     requestSent.value = true;
+    console.log(123);
 
     const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${props.post.id}`, { method: 'delete' })
-    if (response.status === 200) {
-        emit('post-deleted', props.post.id)
-    }
+    if (response.status === 200) postDeletedHandler(props.post.id);
     requestSent.value = false
 }
+
+
 
 </script>
 

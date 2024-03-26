@@ -30,7 +30,9 @@
 
 </style>
 <script setup>
-import { defineProps } from 'vue'
+import { defineProps } from 'vue';
+
+//props, emits, etc...
 defineProps({
     size: {
         type: String,

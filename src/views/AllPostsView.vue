@@ -10,34 +10,23 @@
                 </TransitionGroup>
             </div>
 
-            <LoadingComp size="60px" v-else-if="loading" />
+            <LoadingComp size="60px" v-else-if="postsLoading" />
             <p v-else>Вы удалили все посты >:(</p>
         </transition>
     </section>
 </template>
 
 <script setup>
-import { defineAsyncComponent, reactive, ref } from "vue";
+import { defineAsyncComponent, inject, computed } from "vue";
 import PostComp from "@/components/PostComp.vue";
 
 const LoadingComp = defineAsyncComponent(() => import('@/components/ui/LoadingComp.vue'));
 
-const posts = reactive([]);
-const loading = ref(true);
+//injected values from App.vue
+const posts = computed(() => inject('posts'));
+const postDeletedHandler = inject('post-deleted-handler');
+const postsLoading = computed(() => inject('posts-loading'));
 
-setTimeout(async () => {
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts/', { method: 'get' });
-    const data = await response.json();
-    data.forEach((post) => posts.push(post));
-    loading.value = false;
-}, 1000)
-
-const postDeletedHandler = (id) => {
-    const postIndex = posts.findIndex(post => post.id === id);
-    if (postIndex < 0) return;
-
-    posts.splice(postIndex, 1);
-}
 
 </script>
 
