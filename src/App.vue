@@ -1,30 +1,38 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="app-wrapper">
+    <AsideMenu class="aside-menu" />
+
+    <div class="page-wrapper">
+      <router-view v-slot="{ Component }">
+        <transition name="fade">
+          <component :is="Component" :key="Component && Component.type.__name" />
+        </transition>
+      </router-view>
+    </div>
+
+  </div>
 </template>
+<script setup>
+import AsideMenu from '@/components/AsideMenu.vue'
+</script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<style lang="sass">
+@import "@/sass/transitions.sass"
 
-nav {
-  padding: 30px;
+#app 
+  .aside-menu
+    width: 20%
+    height: 100dvh
+    height: 100svh
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+body 
+  background-color: rgba(0, 128, 128, .05)
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+.page-wrapper 
+  padding-left: 20%
+  min-height: 100dvh
+  min-height: 100svh
+  width: 100%
+
+
 </style>

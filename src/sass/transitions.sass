@@ -1,0 +1,27 @@
+.fade-enter-to,
+.fade-leave-from
+    opacity: 100%
+
+.fade-enter-from,
+.fade-leave-to
+    opacity: 0%
+
+.fade-enter-active,
+.fade-leave-active
+    transition: opacity 200ms ease-in-out
+
+.list-transition-enter-active
+    transition: transform 400ms ease-out, opacity 400ms ease-out
+
+.list-transition-leave-active
+    transition: transform 400ms ease-in, opacity 400ms ease-in
+
+.list-transition-enter-to,
+.list-transition-leave-from
+    transform: translateX(0%)
+    opacity: 100%
+
+.list-transition-enter-from
+.list-transition-leave-to
+    transform: translateX(-20%)
+    opacity: 0%
