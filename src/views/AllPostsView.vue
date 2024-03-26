@@ -29,7 +29,6 @@ setTimeout(async () => {
     const response = await fetch('https://jsonplaceholder.typicode.com/posts/', { method: 'get' });
     const data = await response.json();
     data.forEach((post) => posts.push(post));
-    console.log(data)
     loading.value = false;
 }, 1000)
 

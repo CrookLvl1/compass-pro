@@ -45,7 +45,6 @@ const deletePost = async () => {
     requestSent.value = true;
 
     const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${props.post.id}`, { method: 'delete' })
-    console.log(response)
     if (response.status === 200) {
         emit('post-deleted', props.post.id)
     }
@@ -86,6 +85,7 @@ const deletePost = async () => {
 
     &__body 
         padding-top: 2rem
+        max-width: 80%
 
     &__delete-btn
         position: absolute

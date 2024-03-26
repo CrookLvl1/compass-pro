@@ -4,7 +4,7 @@
         <section class="sections">
             <FormMainComponent class="sections__form" @form-sent="formSentHandler" />
             <transition name="fade" mode="out-in">
-                <InfoComp v-if="data" class="sections__info" :item="data" :key="data" />
+                <InfoComp class="sections__info" :style="{'visibility': data ? '' : 'hidden'}" :item="data" :key="data" />
             </transition>
         </section>
     </div>

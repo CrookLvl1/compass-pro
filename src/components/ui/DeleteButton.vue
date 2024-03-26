@@ -31,7 +31,7 @@ const clickHanlder = (ev) => {
             document.addEventListener('click', (ev) => {
                 if (ev.target.closest(`delete-button-${props.uniqueId}`)) return;
                 reset()
-            }, { 'once': true });
+            }, { 'once': true, capture: true });
 
             break;
         }
